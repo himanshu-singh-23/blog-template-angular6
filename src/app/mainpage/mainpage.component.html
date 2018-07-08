@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card text-white bg-dark w-100" *ngFor="let blog of blogs;let i=index;">
+    <img class="card-img-top" src="{{blog.image}}" alt="Card image cap">
+    <div class="card-header "></div>
+    <div class="card-body">
+      <h5 class="card-title">{{blog.title}} - {{i+1}}</h5>
+      <p class="card-text" *ngIf="!blog.showMore">{{blog.content.substr(0,150)}}......</p>
+      <p class="card-text" *ngIf="blog.showMore">{{blog.content}}</p>
+    </div>
+    <div class="card-body">
+      <button class="like-button" (click)="addlike(i)">Likes ({{blog.likes}})</button>
+    </div>
+    <div class="show-more">
+      <a (click)="showMore(i)" *ngIf="!blog.showMore">Show More </a>
+      <a (click)="showMore(i)" *ngIf="blog.showMore">Show Less </a>
+    </div>
+  </div>
+</div>
